@@ -6,17 +6,29 @@ export const MintButton = ({
   onMint,
   candyMachine,
   isMinting,
+  walletConnected,
 }: {
-  onMint: (quantityString: number) => Promise<void>;
+  onMint: ((quantityString: number) => Promise<void>) | undefined;
   candyMachine: CandyMachine | undefined;
   isMinting: boolean;
+  walletConnected: boolean;
 }) => {
+  const handleClick = async () => {
+    if (!walletConnected) {
+      alert("Please connect your wallet first.");
+      return;
+    }
+    if (!onMint) {
+      alert("Mint function not initialized.");
+      return;
+    }
+    await onMint(1);
+  };
+
   return (
     <Button
-      disabled={!!isMinting}
-      onClick={async () => {
-        await onMint(1);
-      }}
+      disabled={!!isMinting || !walletConnected || !onMint}
+      onClick={handleClick}
       variant="contained"
     >
       {!candyMachine ? (
@@ -26,6 +38,6 @@ export const MintButton = ({
       ) : (
         "MINT"
       )}
-        </Button>
-      );
-    };
+    </Button>
+  );
+};

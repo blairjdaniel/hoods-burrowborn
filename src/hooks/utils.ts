@@ -1,6 +1,6 @@
 import { CandyMachine, Metaplex } from "@metaplex-foundation/js";
 import { LAMPORTS_PER_SOL, PublicKey } from "@solana/web3.js";
-import { MintCounterBorsh } from "../borsh/mintCounter";
+
 import {
   GuardGroup,
   GuardGroupStates,

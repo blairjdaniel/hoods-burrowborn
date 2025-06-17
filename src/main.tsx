@@ -6,7 +6,7 @@ import {
 import { WalletModalProvider } from "@solana/wallet-adapter-react-ui";
 
 import { PhantomWalletAdapter } from '@solana/wallet-adapter-phantom';
-import { LedgerWalletAdapter } from '@solana/wallet-adapter-ledger';
+
 
 
 import React from "react";
@@ -25,7 +25,7 @@ const Main = () => {
  const wallets = useMemo(
     () => [
       new PhantomWalletAdapter(),
-      new LedgerWalletAdapter(),
+    
     ],
     []
   );

@@ -1,0 +1,21 @@
+{
+  "name": "Burrow Born NFT",
+  "description": "Tradeable Burrow Born NFT for a Physical Burrow Born Graphic Novel.",
+  "image": "7.png",
+  "external_url": "https://hoodsdao.xyz",
+  "attributes": [
+    { "trait_type": "Edition", "value": "Open" },
+    { "trait_type": "Type", "value": "Burrow Born" },
+    { "trait_type": "Rarity", "value": "Common" },
+    { "trait_type": "Status", "value": "Tradeable" }
+  ],
+  "properties": {
+    "files": [
+      {
+        "uri": "7.png",
+        "type": "application/json"
+      }
+    ],
+    "category": "image"
+  }
+}

@@ -8,9 +8,6 @@ import { useConnection, useWallet } from "@solana/wallet-adapter-react";
 import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 import { LAMPORTS_PER_SOL, PublicKey } from "@solana/web3.js";
 import confetti from "canvas-confetti";
-// import Link from "next/link";
-// import Countdown from "react-countdown";
-// import Button from "@mui/material/Button";
 import { useEffect, useMemo, useState } from "react";
 import styled from "styled-components";
 import { GatewayProvider } from "@civic/solana-gateway-react";
@@ -26,12 +23,6 @@ import NftsModal from "./NftsModal";
 import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
 import { useCandyMachineV3 } from "./hooks/useCandyMachineV3";
 import { CandyMachine } from "@metaplex-foundation/js";
-// import {
-//   CustomCandyGuardMintSettings,
-//   NftPaymentMintSettings,
-//   ParsedPricesForUI,
-// } from "./hooks/types";
-// import { guardToLimitUtil } from "./hooks/utils";
 import "@fontsource/plus-jakarta-sans/600.css";
 import "@fontsource/noto-sans/900.css";
 import { createUmi as baseCreateUmi } from "@metaplex-foundation/umi-bundle-defaults";
@@ -142,27 +133,14 @@ const InfoBox = styled.div`
   }
   */
 `;
-// const IconRow = styled.div`
-//   display: flex;
-//   flex-direction: row;
-//   align-items: center;
-//   padding: 0px;
-//   gap: 24px;
-//   margin-bottom: -3px;
-// `
+
 const CollectionDescription = styled.p`
   font-weight: 400;
   font-size: 20px;
   line-height: 150%;
   color: var(--white);
 `
-// const MintedByYou = styled.span`
-//   font-style: italic;
-//   font-weight: 500;
-//   font-size: 16px;
-//   line-height: 100%;
-//   text-transform: none;
-// `
+
 const ProgressbarWrap = styled.div`
   display: flex;
   flex-direction: column;
@@ -171,101 +149,6 @@ const ProgressbarWrap = styled.div`
   gap: 16px;
   width: 100%;
 `
-// const StartTimer = styled.div`
-//   display: flex;
-//   flex-direction: row;
-//   justify-content: center;
-//   align-items: center;
-//   padding: 32px;
-//   gap: 48px;
-//   background: var(--alt-background-color);
-//   border-radius: 8px;
-//   @media only screen and (max-width: 450px) {
-//     gap: 16px;
-//     padding: 16px;
-//     width: -webkit-fill-available;
-//     justify-content: space-between;
-//   }
-// `
-// const StartTimerInner = styled(Paper)`
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   padding: 0px;
-//   gap: 16px;
-//   min-width: 90px;
-//   border-radius: 0px !important;
-//   box-shadow: none !important;
-//   font-style: normal;
-//   font-weight: 600;
-//   font-size: 16px;
-//   line-height: 100%;
-//   background: none !important;
-//   text-transform: uppercase;
-//   color: var(--white);
-//   span {
-//     font-style: normal;
-//     font-weight: 800;
-//     font-size: 48px;
-//     line-height: 100%;
-//   }
-
-  // @media only screen and (max-width: 450px) {
-  //   min-width: 70px;
-  //   span {
-  //     font-size: 32px;
-  //   }
-  // }
-// `;
-// // const StartTimerWrap = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
-//   align-items: start;
-//   padding: 0px;
-//   gap: 16px;
-//   width: -webkit-fill-available;
-// `
-// const StartTimerSubtitle = styled.p`
-//   font-style: normal;
-//   font-weight: 600;
-//   font-size: 20px;
-//   line-height: 100%;
-//   text-transform: uppercase;
-//   color: #FFFFFF;
-// `
-// const PrivateWrap = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   align-items: flex-start;
-//   padding: 0px;
-//   gap: 8px;
-//   width: -webkit-fill-available;
-// `
-// const PrivateText = styled.h2`
-//   display: flex;
-//   flex-direction: row;
-//   justify-content: center;
-//   align-items: center;
-//   padding: 16px 24px;
-//   gap: 10px;
-//   background: var(--error);
-//   border-radius: 4px;
-//   font-style: normal;
-//   font-weight: 600;
-//   font-size: 20px;
-//   line-height: 150%;
-//   text-transform: uppercase;
-//   color: var(--white);
-//   width: -webkit-fill-available;
-// `
-// const PrivateSubtext = styled.p`
-//   font-style: normal;
-//   font-weight: 400;
-//   font-size: 16px;
-//   line-height: 150%;
-//   color: var(--white);
-// `
 const WalletAmount = styled.div`
   color: var(--white);
   width: auto;
@@ -331,9 +214,6 @@ const ConnectWallet = styled(WalletMultiButton)`
   }
 `
 
-
-
-
 function createUmi(rpcEndpoint: string, wallet: any) {
   return baseCreateUmi(rpcEndpoint).use(walletAdapterIdentity(wallet));
 }
@@ -347,7 +227,7 @@ export interface HomeProps {
   const { connection } = useConnection();
   const wallet = useWallet();
   // Your mint address as a string
-  const mintAddress = "CvF5XyTKUAtYB23n9Uf84zx5CMHkFkSTK6qchyZLtafz"; // Replace with your actual mint address
+  const mintAddress = "CvF5XyTKUAtYB23n9Uf84zx5CMHkFkSTK6qchyZLtafz"; 
   // Create umi instance with wallet adapter and register mplTokenMetadata
   const umi = useMemo(() => {
     const umiInstance = createUmi(clusterApiUrl("devnet"), wallet)
@@ -414,17 +294,8 @@ export interface HomeProps {
   [candyMachineV3.mint]
 );
   
-//   const MintButtonWrapper = ({
-// }) => (
-//   <MintButton
-//     candyMachine={candyMachineV3.candyMachine}
-//     isMinting={candyMachineV3.status.minting}
-//     onMint={startMint}  
-//   />
-// );
   
    const candyPrice = "0.01 SOL"; 
-   // Inside your component, before the return statement:
     console.log("wallet:", wallet);
     console.log("candyMachineV3:", candyMachineV3);
     console.log("candyMachineV3.candyMachine:", candyMachineV3.candyMachine);

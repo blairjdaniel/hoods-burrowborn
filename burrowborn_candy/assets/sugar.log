@@ -1,2 +1,0 @@
-{"v":0,"name":"sugar","msg":"Lend me some sugar, I am your neighbor.","level":30,"hostname":"Blairs-Mac-Studio.local","pid":30593,"time":"2025-06-13T03:46:24.919632Z","target":"sugar","line":124,"file":"src/main.rs"}
-{"v":0,"name":"sugar","msg":"MissingFileError(\"config.json\")","level":50,"hostname":"Blairs-Mac-Studio.local","pid":30593,"time":"2025-06-13T03:46:24.919862Z","target":"sugar_cli::config::parser","line":21,"file":"src/config/parser.rs"}

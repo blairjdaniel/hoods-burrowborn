@@ -1,0 +1,64 @@
+ -> https://www.solana.fm/address/DyrMyfhTeMLG5QYXAV2YxfisWQfT76Qhz55CcCCUEDqu?cluster=devnet-alpha
+
+ 🍬 Candy machine ID: DyrMyfhTeMLG5QYXAV2YxfisWQfT76Qhz55CcCCUEDqu
+ :
+ :.. authority: 4g3XhRMs3npnmt5oqAg7KT2nN7cVKibjoLHXs5ZHz59y
+ :.. mint authority: HnLjNj8HD9N3uvtSLoG21rBKgrKcmQmq4HCz6PLZ3Ymo
+ :.. collection mint: J9SEEqW7Gi1qTUie4EbXMGw538A9TWnsZU1CACyksXm1
+ :.. account version: V2
+ :.. token standard: NonFungible
+ :.. features: none
+ :.. max supply: 0
+ :.. items redeemed: 0
+ :.. items available: 16
+ :.. symbol: BBHOOD
+ :.. seller fee basis points: 5% (500)
+ :.. is mutable: true
+ :.. creators: 
+ :   :.. 1: 4g3XhRMs3npnmt5oqAg7KT2nN7cVKibjoLHXs5ZHz59y (100%)
+ :.. hidden settings: none
+ :.. config line settings: 
+     :.. prefix_name: Burrow Born NFT
+     :.. name_length: 0
+     :.. prefix_uri: https://gateway.pinata.cloud/ipfs/Qm
+     :.. uri_length: 52
+     :.. is_sequential: false
+
+
+blairjdaniel@Blairs-Mac-Studio burrowborn_candy % sugar guard show
+[1/1] 🔍 Loading candy guard
+▪▪▪▪▪ Done
+
+🛡  Candy Guard ID: HnLjNj8HD9N3uvtSLoG21rBKgrKcmQmq4HCz6PLZ3Ymo
+ :
+ :.. base: 2P8AbFWFRxLH1eJq4h9oJQxjk6yjdvojUUvuj2Wzw2NE
+ :.. bump: 255
+ :.. authority: 4g3XhRMs3npnmt5oqAg7KT2nN7cVKibjoLHXs5ZHz59y
+ :.. data: 
+     :.. default: 
+     :   :.. bot tax: none
+     :   :.. sol payment: 
+     :   :   :.. lamports: 10000000 (◎ 0.01)
+     :   :   :.. destination: 4g3XhRMs3npnmt5oqAg7KT2nN7cVKibjoLHXs5ZHz59y
+     :   :.. token payment: none
+     :   :.. start date: none
+     :   :.. third party signer: none
+     :   :.. token gate: none
+     :   :.. gatekeeper: none
+     :   :.. end date: none
+     :   :.. allow list: none
+     :   :.. mint limit: none
+     :   :.. nft payment: none
+     :   :.. redeemed amount: none
+     :   :.. address gate: none
+     :   :.. nft gate: none
+     :   :.. nft burn: none
+     :   :.. token burn: none
+     :   :.. freeze sol payment: none
+     :   :.. freeze token payment: none
+     :   :.. program gate: none
+     :   :.. allocation: none
+     :   :.. token2022 payment: none
+     :.. groups: none
+
+

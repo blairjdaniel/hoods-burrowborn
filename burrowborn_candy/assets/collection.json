@@ -4,9 +4,6 @@
   "image": "collection.png",
   "external_url": "https://hoodsdao.xyz",
   "seller_fee_basis_points": 500,
-  "attributes": [ 
-   
-  ],
   "properties": {
     "files": [
       {
@@ -14,12 +11,7 @@
         "type": "image/png"
       }
     ],
-    "category": "image",
-    "creators": [
-      {
-        "address": "4g3XhRMs3npnmt5oqAg7KT2nN7cVKibjoLHXs5ZHz59y",
-        "share": 100
-      }
-    ]
+    "category": "image"
+
   }
 }

@@ -37,39 +37,69 @@ import { WalletInfo } from "./components/WalletInfo";
 import { CollectionImage } from "./components/CollectionImage";
 import { logMintContext } from "./helpers/logs";
 import { useMint } from "./hooks/useMint";
+import { log } from "console";
+
+
+export interface HomeProps {
+  candyMachineId: PublicKey;
+}
 
 const collectionMintAddress = process.env.NEXT_PUBLIC_COLLECTION_MINT_ADDRESS as string;
 
 
-export default function Home() {
+export default function Home({ candyMachineId }: HomeProps) {
+  console.log("Home mounted");
   const { connection } = useConnection();
   const wallet = useWallet();
   const umi = useUmi(wallet);
-  const { collectionNft, loading: loadingCollection } = useCollectionNft(umi, collectionMintAddress);
+  const { collectionNft } = useCollectionNft(umi, collectionMintAddress);
   const balance = useWalletBalance(connection, wallet.publicKey);
 
-  // ...mint logic, error handling, etc.
-
   // Get mint logic from useMint hook
-  const candyMachineV3 = useCandyMachineV3({ umi, wallet, collectionNft });
+  const candyMachineV3 = useCandyMachineV3({ umi, wallet, collectionNft, candyMachineId });
+
+  console.log("wallet?.publicKey:", wallet?.publicKey);
+  console.log("candyMachineV3.candyMachine:", candyMachineV3.candyMachine);
+  console.log("collectionNft:", collectionNft);
+  console.log("collectionNft.metadata?.updateAuthority:", collectionNft?.metadata?.updateAuthority);
+  const isReady =
+  !!wallet?.publicKey &&
+  !!candyMachineV3.candyMachine &&
+  !!collectionNft &&
+  !!collectionNft.metadata?.updateAuthority;
+  console.log("isReady:", isReady);
+
+  // ...mint logic, error handling, etc.
+  useEffect(() => {
+    logMintContext(wallet, candyMachineV3, umi);
+  });
+
   const [alertState, setAlertState] = useState<AlertState | undefined>(undefined);
+
   const { startMint, minting, error, mintedItems } = useMint({
-    candyMachineV3: candyMachineV3.candyMachine,
+    candyMachineV3,
+    collectionNft,
     setAlertState,
   });
 
+  
+
   return (
     <main>
-      <Header>
-        <WalletContainer>
-          <Wallet>
-            <WalletAmount>
-              {/* Wallet balance and connect button here */}
-              <ConnectButton />
-            </WalletAmount>
-          </Wallet>
-        </WalletContainer>
-      </Header>
+     <Header>
+          <WalletContainer>
+            <Wallet>
+              {wallet ? (
+                <WalletAmount>
+                  {(balance || 0).toLocaleString()} SOL
+                  <ConnectButton />
+                </WalletAmount>
+              ) : (
+                <ConnectButton>Connect Wallet</ConnectButton>
+              )}
+            </Wallet>
+          </WalletContainer>
+        </Header>
 
       <Section>
         <Container>
@@ -86,12 +116,20 @@ export default function Home() {
               </CollectionDescription>
               {/* More content here */}
             </Content>
-             <MintButton
-            onMint={startMint}
-            candyMachine={candyMachineV3.candyMachine}
-            isMinting={minting}
-            walletConnected={wallet.connected}
-              />
+            {!isReady ? (
+              <div>Loading mint info...</div>
+            ) : (
+              <>
+                <MintButton
+                  onMint={startMint}
+                  candyMachine={candyMachineV3.candyMachine}
+                  isMinting={minting}
+                  walletConnected={!!wallet?.publicKey}
+                  disabled={!isReady}
+                />
+                {minting && <div>Minting in progress...</div>}
+              </>
+            )}
           </Column>
         </Container>
       </Section>

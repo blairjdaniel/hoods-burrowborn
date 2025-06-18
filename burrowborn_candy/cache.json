@@ -1,17 +1,17 @@
 {
   "program": {
-    "candyMachine": "7BhfFh8X47aHKJwtfqGwFXkeRR1TEvSiicoZEtsjdr88",
-    "candyGuard": "2bEMVPpuq18gY1Ur45QMKu7nGsqfqYa2G2cqu6khzMDw",
-    "candyMachineCreator": "9MBgN8yWCB6LFvycZomy6qfDBwLojw6SXpAbQew3Uo5L",
-    "collectionMint": "CvF5XyTKUAtYB23n9Uf84zx5CMHkFkSTK6qchyZLtafz"
+    "candyMachine": "BrtJQurW2sMFoRL2kHM1veawUit76E7T88FxLCvz1dkz",
+    "candyGuard": "E3gb3GqG43Ab1x621ntEHmk6zUw6Q8S38J3fznrWwgkE",
+    "candyMachineCreator": "3exDGuAH7kZNjs4WntuYLYq1wxrQp7xgcArLppZ3zoTD",
+    "collectionMint": "2k61qGWsFFbtvo2a3AbMJWTxZJMS5gL5ujAG7AZcR7Wt"
   },
   "items": {
     "-1": {
-      "name": "Burrow Born NFT",
+      "name": "Burrow Born NFT Open Edition",
       "image_hash": "4e21862ac422d0e692a1046414328582178b77cb976ef05b163ad94d7d32831d",
       "image_link": "https://gateway.pinata.cloud/ipfs/QmVAVXHm7bwM2wukoVifcF4a4aUiLvVwcoQ3kfjsoApCBn/collection.png",
-      "metadata_hash": "d89da1fb120cc9d2d9f3c85dba35e72395e8603a7146c1de49ae4bfceb867da8",
-      "metadata_link": "https://gateway.pinata.cloud/ipfs/QmejVGrU6F7wKVDoRezyKUEUMTxppDueipi5u5E77FsaeV/collection.json",
+      "metadata_hash": "ce46ac1ed2d959c3b0705017bd2056ab8fd69030cf291211f3cc40ff91b57489",
+      "metadata_link": "https://gateway.pinata.cloud/ipfs/QmVZNsq9zjumKEJYrJFrjuj1VhzdpQu2WPjUJmpcnbNSR3/collection.json",
       "onChain": true
     },
     "0": {

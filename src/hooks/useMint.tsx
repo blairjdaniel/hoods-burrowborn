@@ -2,37 +2,43 @@ import { useState, useCallback } from "react";
 
 interface UseMintProps {
   candyMachineV3: any;
+  collectionNft: any;
   setAlertState?: (state: { open: boolean; message: string; severity: "error" | "success" }) => void;
 }
 
-export function useMint({ candyMachineV3, setAlertState }: UseMintProps) {
+export function useMint({ candyMachineV3, collectionNft, setAlertState }: UseMintProps) {
   const [minting, setMinting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [mintedItems, setMintedItems] = useState<any>(null);
 
-  const startMint = useCallback(
-    async (quantity: number = 1) => {
-      if (!candyMachineV3 || !candyMachineV3.mint) {
-        const msg = "Candy Machine not ready";
-        setError(msg);
-        setAlertState?.({ open: true, message: msg, severity: "error" });
-        return;
-      }
+  const startMint = useCallback(async (quantity = 1) => {
+    console.log("collectionNft:", collectionNft);
+    console.log("collectionNft.metadata:", collectionNft?.metadata);
+    console.log("collectionNft.metadata.updateAuthority:", collectionNft?.metadata?.updateAuthority);  
+    console.log("startMint called");
+    if (!candyMachineV3 || !candyMachineV3.mint) {
+      console.log("Candy Machine not ready");
+      return;
+    }
+    if (!collectionNft || !collectionNft.metadata?.updateAuthority) {
+      console.log("Collection NFT or update authority not loaded");
+      return;
+    }
+    console.log("About to call mint");
+    try {
       setMinting(true);
-      setError(null);
-      try {
-        const items = await candyMachineV3.mint(quantity);
-        setMintedItems(items);
-        setAlertState?.({ open: true, message: "Mint successful!", severity: "success" });
-      } catch (e: any) {
-        setError(e.message);
-        setAlertState?.({ open: true, message: e.message, severity: "error" });
-      } finally {
-        setMinting(false);
-      }
-    },
-    [candyMachineV3, setAlertState]
-  );
+      const items = await candyMachineV3.mint(quantity);
+      console.log("Mint successful:", items);
+      setMintedItems(items);
+    } catch (e: any) {
+      setError(e.message);
+      setAlertState?.({ open: true, message: e.message, severity: "error" });
+      console.error("Mint error:", e);
+    } finally {
+      setMinting(false);
+    }
+    console.log("Mint function finished");
+  }, [candyMachineV3, collectionNft, setAlertState]);
 
   return { startMint, minting, error, mintedItems };
 }

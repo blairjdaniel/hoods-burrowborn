@@ -7,14 +7,33 @@ export function useCollectionNft(umi: any, mintAddress: string) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (!umi || !mintAddress) return;
+    if (!umi || !mintAddress) {
+      setCollectionNft(null);
+      setLoading(false);
+      return;
+    }
     setLoading(true);
     (async () => {
+      let mint;
       try {
-        const mint = publicKey(mintAddress);
+        mint = publicKey(mintAddress);
+      } catch (e) {
+        console.error("Invalid mint address:", mintAddress);
+        setCollectionNft(null);
+        setLoading(false);
+        return;
+      }
+
+      try {
         const metadataPda = findMetadataPda(mint);
         const metadata = await fetchMetadata(umi, metadataPda);
-        setCollectionNft({ mint, metadata });
+        console.log("Fetched metadata:", metadata);
+
+        if (metadata && metadata.updateAuthority) {
+          setCollectionNft({ mint, metadata });
+        } else {
+          setCollectionNft(null);
+        }
       } catch (e) {
         setCollectionNft(null);
       } finally {

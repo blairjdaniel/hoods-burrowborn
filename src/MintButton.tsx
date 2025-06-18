@@ -22,6 +22,7 @@ export const MintButton = ({
       alert("Mint function not initialized.");
       return;
     }
+    console.log("Mint button clicked!"); // Should log on click
     await onMint(1);
   };
 
@@ -29,7 +30,6 @@ export const MintButton = ({
     <Button
       disabled={!!isMinting || !walletConnected || !onMint}
       onClick={handleClick}
-      variant="contained"
     >
       {!candyMachine ? (
         "CONNECTING..."

@@ -1,0 +1,23 @@
+{
+  "name": "Burrow Born NFT",
+  "symbol": "BBHOODS",
+  "description": "The official collection NFT for Burrow Born.",
+  "image": "https://coffee-above-centipede-55.mypinata.cloud/ipfs/bafybeib7h6ukah2xbiggkzrhg5v5bcydyck6urgr3ndgyy3ck3zved5j7m",
+  "seller_fee_basis_points": 500,
+  "attributes": [],
+  "properties": {
+    "files": [
+      {
+        "uri": "https://coffee-above-centipede-55.mypinata.cloud/ipfs/bafybeib7h6ukah2xbiggkzrhg5v5bcydyck6urgr3ndgyy3ck3zved5j7m",
+        "type": "image/png"
+      }
+    ],
+    "category": "image",
+    "creators": [
+      {
+        "address": "YOUR_SOLANA_WALLET_ADDRESS",
+        "share": 100
+      }
+    ]
+  }
+}

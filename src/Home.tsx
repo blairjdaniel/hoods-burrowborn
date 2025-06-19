@@ -38,6 +38,7 @@ import { CollectionImage } from "./components/CollectionImage";
 import { logMintContext } from "./helpers/logs";
 import { useMint } from "./hooks/useMint";
 import { log } from "console";
+import { useCandyGuard } from "./hooks/useCandyGuard";
 
 
 export interface HomeProps {
@@ -46,6 +47,7 @@ export interface HomeProps {
 
 const collectionMintAddress = process.env.NEXT_PUBLIC_COLLECTION_MINT_ADDRESS as string;
 
+console.log('Collection Mint Address:', collectionMintAddress);
 
 export default function Home({ candyMachineId }: HomeProps) {
   console.log("Home mounted");
@@ -54,8 +56,8 @@ export default function Home({ candyMachineId }: HomeProps) {
   const umi = useUmi(wallet);
   const { collectionNft } = useCollectionNft(umi, collectionMintAddress);
   const balance = useWalletBalance(connection, wallet.publicKey);
-
-  // Get mint logic from useMint hook
+  const candyGuardAddress = process.env.NEXT_PUBLIC_CANDY_MACHINE_GUARD as string;
+  const { candyGuard, loading } = useCandyGuard(umi, candyGuardAddress);
   const candyMachineV3 = useCandyMachineV3({ umi, wallet, collectionNft, candyMachineId });
 
   console.log("wallet?.publicKey:", wallet?.publicKey);
@@ -82,7 +84,8 @@ export default function Home({ candyMachineId }: HomeProps) {
     setAlertState,
   });
 
-  
+   if (loading) return <p>Loading Candy Guard...</p>;
+  if (!candyGuard) return <p>No Candy Guard found.</p>;
 
   return (
     <main>
@@ -96,6 +99,7 @@ export default function Home({ candyMachineId }: HomeProps) {
                 </WalletAmount>
               ) : (
                 <ConnectButton>Connect Wallet</ConnectButton>
+                
               )}
             </Wallet>
           </WalletContainer>

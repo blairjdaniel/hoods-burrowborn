@@ -9,11 +9,6 @@ import {
 import { mintV2, fetchCandyMachine } from '@metaplex-foundation/mpl-candy-machine';
 import { setComputeUnitLimit } from '@metaplex-foundation/mpl-toolbox';
 
-export interface HomeProps {
-  candyMachineId: PublicKey;
-}
-
-
 export function useCandyMachineV3({ umi, wallet, collectionNft, candyMachineId }) {
   const [candyMachine, setCandyMachine] = useState<any>(null);
   const [status, setStatus] = useState({ creating: false, minting: false, error: null });
@@ -37,11 +32,10 @@ export function useCandyMachineV3({ umi, wallet, collectionNft, candyMachineId }
         .add(setComputeUnitLimit(umi, { units: 800_000 }))
         .add(
           mintV2(umi, {
-            candyMachine: candyMachineId,
+            candyMachine: candyMachine.publicKey,
             nftMint: generateSigner(umi),
             collectionMint: collectionNft.mint,
             collectionUpdateAuthority: collectionNft.metadata.updateAuthority,
-            candyGuard: candyMachine.mintAuthority,
             mintArgs: {
               solPayment: some({ destination: publicKey(treasury) }), // <-- Use some() here
             },

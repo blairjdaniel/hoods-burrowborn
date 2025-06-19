@@ -12,5 +12,6 @@
     "@solana/wallet-adapter-wallets": "^0.19.37",
     "@solana/web3.js": "^1.98.2",
     "dotenv": "^16.5.0"
-  }
+  },
+  "type": "module"
 }

@@ -1,5 +1,5 @@
 {
-  "name": "zaab-cmv3",
+  "name": "BurrowBorn",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -20,10 +20,12 @@
     "@metaplex-foundation/mpl-core": "^1.4.0",
     "@metaplex-foundation/mpl-token-metadata": "^3.4.0",
     "@metaplex-foundation/mpl-toolbox": "^0.10.0",
-    "@metaplex-foundation/umi": "^1.0.0",
+    "@metaplex-foundation/umi": "^1.2.0",
     "@metaplex-foundation/umi-bundle-defaults": "^1.2.0",
     "@metaplex-foundation/umi-signer-wallet-adapters": "^1.0.0",
+    "@metaplex-foundation/umi-uploader-irys": "^1.2.0",
     "@mui/material": "^7.1.1",
+    "@solana-developers/helpers": "^2.8.1",
     "@solana/spl-token": "^0.4.13",
     "@solana/wallet-adapter-base": "^0.9.27",
     "@solana/wallet-adapter-phantom": "^0.09.28",
@@ -31,13 +33,15 @@
     "@solana/wallet-adapter-react-ui": "^0.9.39",
     "@solana/web3.js": "^1.98.2",
     "canvas-confetti": "^1.9.3",
+    "es": "^0.8.0",
     "next": "^15.3.3",
+    "run": "^1.5.0",
     "styled-components": "^6.1.19"
   },
   "devDependencies": {
     "@types/node": "^24.0.1",
-    "@types/react": "^19.1.0",
-    "@types/react-dom": "^19.1.0",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
     "eslint": "9.29.0",
     "eslint-config-next": "15.3.3",
     "typescript": "5.8.3"
